@@ -1,28 +1,13 @@
-/*****************************************************************/
-/*   NAME: Michael Benjamin                                      */
-/*   ORGN: Dept of Mechanical Eng / CSAIL, MIT Cambridge MA      */
-/*   FILE: Relayer_Info.cpp                                      */
-/*   DATE: Jan 12th, 2012                                        */
-/*                                                               */
-/* This program is free software; you can redistribute it and/or */
-/* modify it under the terms of the GNU General Public License   */
-/* as published by the Free Software Foundation; either version  */
-/* 2 of the License, or (at your option) any later version.      */
-/*                                                               */
-/* This program is distributed in the hope that it will be       */
-/* useful, but WITHOUT ANY WARRANTY; without even the implied    */
-/* warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR       */
-/* PURPOSE. See the GNU General Public License for more details. */
-/*                                                               */
-/* You should have received a copy of the GNU General Public     */
-/* License along with this program; if not, write to the Free    */
-/* Software Foundation, Inc., 59 Temple Place - Suite 330,       */
-/* Boston, MA 02111-1307, USA.                                   */
-/*****************************************************************/
+/****************************************************************/
+/*   NAME:                                              */
+/*   ORGN: MIT, Cambridge MA                                    */
+/*   FILE: bar10xt_Info.cpp                               */
+/*   DATE: December 29th, 1963                                  */
+/****************************************************************/
 
 #include <cstdlib>
 #include <iostream>
-#include "Relayer_Info.h"
+#include "bar10xt_Info.h"
 #include "ColorParse.h"
 #include "ReleaseInfo.h"
 
@@ -35,10 +20,11 @@ void showSynopsis()
 {
   blk("SYNOPSIS:                                                       ");
   blk("------------------------------------                            ");
-  blk("  The purpose of the pXRelay application is to provide a simple ");
-  blk("  example of the MOOS publish-subscribe architecture. It is     ");
-  blk("  typically run in conjunction with another instance of the same");
-  blk("  process to send mail back and forth to each other.            ");
+  blk("  The pbar10xt application is used for               ");
+  blk("                                                                ");
+  blk("                                                                ");
+  blk("                                                                ");
+  blk("                                                                ");
 }
 
 //----------------------------------------------------------------
@@ -48,25 +34,23 @@ void showHelpAndExit()
 {
   blk("                                                                ");
   blu("=============================================================== ");
-  blu("Usage: pXRelayTest file.moos [OPTIONS]                          ");
+  blu("Usage: pbar10xt file.moos [OPTIONS]                   ");
   blu("=============================================================== ");
   blk("                                                                ");
   showSynopsis();
   blk("                                                                ");
   blk("Options:                                                        ");
   mag("  --alias","=<ProcessName>                                      ");
-  blk("      Launch pXRelayTest with the given process name rather     ");
-  blk("      than pXRelayTest.                                         ");
+  blk("      Launch pbar10xt with the given process name         ");
+  blk("      rather than pbar10xt.                           ");
   mag("  --example, -e                                                 ");
   blk("      Display example MOOS configuration block.                 ");
   mag("  --help, -h                                                    ");
   blk("      Display this help message.                                ");
-  mag("  --in","=<varname>                                             ");
-  blk("      Use <varname> as the Relay incoming variable              ");
   mag("  --interface, -i                                               ");
   blk("      Display MOOS publications and subscriptions.              ");
-  mag("  --out","=<varname>                                            ");
-  blk("      Use <varname> as the Relay outgoing variable              ");
+  mag("  --version,-v                                                  ");
+  blk("      Display the release version of pbar10xt.        ");
   blk("                                                                ");
   blk("Note: If argv[2] does not otherwise match a known option,       ");
   blk("      then it will be interpreted as a run alias. This is       ");
@@ -82,16 +66,14 @@ void showExampleConfigAndExit()
 {
   blk("                                                                ");
   blu("=============================================================== ");
-  blu("pXRelay Example MOOS Configuration                              ");
+  blu("pbar10xt Example MOOS Configuration                   ");
   blu("=============================================================== ");
   blk("                                                                ");
-  blk("ProcessConfig = pXRelay                                         ");
+  blk("ProcessConfig = pbar10xt                              ");
   blk("{                                                               ");
   blk("  AppTick   = 4                                                 ");
   blk("  CommsTick = 4                                                 ");
   blk("                                                                ");
-  blk("  OUTGOING_VAR = APPLES                                         ");
-  blk("  INCOMING_VAR = PEARS                                          ");
   blk("}                                                               ");
   blk("                                                                ");
   exit(0);
@@ -105,21 +87,29 @@ void showInterfaceAndExit()
 {
   blk("                                                                ");
   blu("=============================================================== ");
-  blu("pXRelay INTERFACE                                               ");
+  blu("pbar10xt INTERFACE                                    ");
   blu("=============================================================== ");
   blk("                                                                ");
   showSynopsis();
   blk("                                                                ");
   blk("SUBSCRIPTIONS:                                                  ");
   blk("------------------------------------                            ");
-  blk("  Whatever variable is specified by the INCOMING_VAR            ");
-  blk("  configuration parameter.                                      ");
+  blk("  NODE_MESSAGE = src_node=alpha,dest_node=bravo,var_name=FOO,   ");
+  blk("                 string_val=BAR                                 ");
   blk("                                                                ");
   blk("PUBLICATIONS:                                                   ");
   blk("------------------------------------                            ");
-  blk("  Whatever variable is specified by the OUTGOING_VAR            ");
-  blk("  configuration parameter.                                      ");
+  blk("  Publications are determined by the node message content.      ");
   blk("                                                                ");
+  exit(0);
+}
+
+//----------------------------------------------------------------
+// Procedure: showReleaseInfoAndExit
+
+void showReleaseInfoAndExit()
+{
+  showReleaseInfo("pbar10xt", "gpl");
   exit(0);
 }
 

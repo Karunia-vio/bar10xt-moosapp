@@ -1,0 +1,38 @@
+// MOOS File
+
+ServerHost = localhost
+ServerPort = 9000
+
+
+ProcessConfig = ANTLER
+{
+  MSBetweenLaunches = 200
+
+  Run = MOOSDB      @ NewConsole = false
+  Run = uMS         @ NewConsole = false
+  Run = pbar10xt    @ NewConsole = false
+}
+
+ProcessConfig = MOOSDB
+{
+  AppTick   = 4
+  CommsTick = 4
+}
+
+ProcessConfig = uMS
+{
+  AppTick   = 4
+  CommsTick = 4
+}
+
+ProcessConfig = pbar10xt
+{
+  AppTick   = 4
+  CommsTick = 4
+
+  // IP ESP32 Modbus Server
+  ESP_IP      = 10.5.51.45
+  MODBUS_PORT = 502
+
+  VERBOSE = true
+}
